@@ -283,20 +283,20 @@ body{width:100vw;height:100vh;overflow:hidden;background:#fdf0f5;}
 
   <div id="scatter-container">
     <div class="scatter-wording">YEN AZAGI...</div>
-    <div class="scatter-frame" style="--x:20vw; --y:25vh; --r:-12deg;"><img src="C:\Users\jagadish\Downloads\ini\ini11.jpeg"></div>
-    <div class="scatter-frame" style="--x:80vw; --y:22vh; --r:15deg;"><img src="C:\Users\jagadish\Downloads\ini\ini12.jpeg"></div>
-    <div class="scatter-frame" style="--x:12vw; --y:55vh; --r:-8deg;"><img src="C:\Users\jagadish\Downloads\ini\ini16.jpeg"></div>
-    <div class="scatter-frame" style="--x:88vw; --y:58vh; --r:10deg;"><img src="C:\Users\jagadish\Downloads\ini\ini16.jpeg"></div>
-    <div class="scatter-frame" style="--x:25vw; --y:80vh; --r:-18deg;"><img src="C:\Users\jagadish\Downloads\ini\ini3.jpeg"></div>
-    <div class="scatter-frame" style="--x:75vw; --y:82vh; --r:12deg;"><img src="C:\Users\jagadish\Downloads\ini\ini17.jpeg"></div>
-    <div class="scatter-frame" style="--x:50vw; --y:18vh; --r:-5deg;"><img src="C:\Users\jagadish\Downloads\ini\ini4.jpeg"></div>
-    <div class="scatter-frame" style="--x:50vw; --y:88vh; --r:8deg;"><img src="C:\Users\jagadish\Downloads\ini\ini7.jpeg"></div>
+    <div class="scatter-frame" style="--x:20vw; --y:25vh; --r:-12deg;"><img src="ini/ini11.jpeg"></div>
+    <div class="scatter-frame" style="--x:80vw; --y:22vh; --r:15deg;"><img src="ini/ini12.jpeg"></div>
+    <div class="scatter-frame" style="--x:12vw; --y:55vh; --r:-8deg;"><img src="ini/ini16.jpeg"></div>
+    <div class="scatter-frame" style="--x:88vw; --y:58vh; --r:10deg;"><img src="ini/ini16.jpeg"></div>
+    <div class="scatter-frame" style="--x:25vw; --y:80vh; --r:-18deg;"><img src="ini/ini3.jpeg"></div>
+    <div class="scatter-frame" style="--x:75vw; --y:82vh; --r:12deg;"><img src="ini/ini17.jpeg"></div>
+    <div class="scatter-frame" style="--x:50vw; --y:18vh; --r:-5deg;"><img src="ini/ini4.jpeg"></div>
+    <div class="scatter-frame" style="--x:50vw; --y:88vh; --r:8deg;"><img src="ini/ini7.jpeg"></div>
   </div>
   
   <div id="photo-reveal">
     <div class="photo-text">OHH NENJAATHIEY NEJAATHIEY</div>
     <div class="photo-frame">
-      <img src="C:\Users\jagadish\Downloads\ini\ini13.jpeg" alt="Memory">
+      <img src="ini/ini13.jpeg" alt="Memory">
     </div>
   </div>
 
@@ -515,7 +515,6 @@ function createHeartOutline(container) {
     piece.style.left = `calc(50% + ${x * scale}px)`;
     piece.style.top = `calc(50% + ${(y + 4) * scale}px)`;
     
-    // Fixed string escaping in innerHTML
     piece.innerHTML = `<img src="${outlineImages[i]}" onerror="this.src='inieye.jpeg'" alt="heart-piece">`;
     container.appendChild(piece);
 
@@ -528,7 +527,6 @@ function createHeartOutline(container) {
     const centerPiece = document.createElement('div');
     centerPiece.className = 'heart-center-piece';
     
-    // Fixed the local file path and double quote syntax issue here
     centerPiece.innerHTML = `<img src="ini main.jpeg" onerror="this.src='https://via.placeholder.com/200x250/dc3264/fff?text=Center'" alt="Center Piece">`;
     
     container.appendChild(centerPiece);
