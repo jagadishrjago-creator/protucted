@@ -8,6 +8,13 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;}
 body{width:100vw;height:100vh;overflow:hidden;background:#fdf0f5;}
+  <!-- BACKGROUND MUSIC -->
+<audio id="bg-music" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- MUSIC BUTTON -->
+<button id="music-toggle" onclick="toggleMusic()">♫</button>
 
 /* ── SCREEN 1: WELCOME ── */
 #s1{position:fixed;inset:0;background:#fdf0f5;display:flex;align-items:center;justify-content:center;flex-direction:column;z-index:10;transition:opacity .5s;}
@@ -111,11 +118,43 @@ body{width:100vw;height:100vh;overflow:hidden;background:#fdf0f5;}
 .scatter-frame.combine{left:50%;top:50%;transform:translate(-50%, -50%) rotate(0deg) scale(0.2);opacity:0;transition:all 1s cubic-bezier(.5,0,.2,1);}
 
 /* ── FINAL PHOTO REVEAL ── */
-#photo-reveal{position:absolute;top:50%;left:50%;transform:translate(-50%, -50%) scale(0.2);display:flex;flex-direction:column;align-items:center;opacity:0;pointer-events:none;transition:all 1.5s cubic-bezier(.34,1.56,.64,1);z-index:150;}
-#photo-reveal.show{opacity:1;transform:translate(-50%, -50%) scale(1);pointer-events:all;}
-.photo-text{font-family:'Playfair Display',serif;font-style:italic;font-size:3.5rem;color:#ffd700;text-shadow:0 3px 12px rgba(0,0,0,0.5);margin-bottom:25px;text-align:center;white-space:nowrap;}
-.photo-frame{width:260px;height:320px;background:white;padding:12px;padding-bottom:40px;border-radius:4px;box-shadow:0 15px 50px rgba(0,0,0,0.6);transform:rotate(-4deg);transition:transform 0.4s cubic-bezier(.34,1.56,.64,1);}
+#photo-reveal {
+  width: min(90vw, 420px);
+}
 
+.photo-text {
+  font-family:'Playfair Display',serif;
+  font-style:italic;
+  font-size:clamp(1.8rem,6vw,3.5rem);
+  color:#ffd700;
+  text-shadow:0 3px 12px rgba(0,0,0,.5);
+  margin-bottom:25px;
+  text-align:center;
+  white-space:normal;
+  line-height:1.2;
+}
+
+.photo-frame {
+  width:min(75vw, 300px);
+  height:min(90vw, 380px);
+  background:white;
+  padding:12px;
+  padding-bottom:40px;
+  border-radius:4px;
+  box-shadow:0 15px 50px rgba(0,0,0,.6);
+  transform:rotate(-4deg);
+  overflow:hidden;
+}
+
+.photo-frame img {
+  width:100%;
+  height:100%;
+  display:block;
+  object-fit:contain;
+  object-position:center;
+  border-radius:2px;
+  background:#f5f5f5;
+}
 /* ── NARUTO JUTSU SEQUENCE ── */
 #naruto-container {
   position:absolute;
@@ -192,6 +231,28 @@ body{width:100vw;height:100vh;overflow:hidden;background:#fdf0f5;}
   opacity:0; transition:opacity 1s ease; z-index:195;
 }
 .final-wording.show { opacity:1; }
+/* ── MUSIC BUTTON ── */
+#music-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(255,255,255,.6);
+  border-radius: 50%;
+  background: rgba(0,0,0,.25);
+  color: white;
+  font-size: 1.3rem;
+  cursor: pointer;
+  z-index: 9999;
+  backdrop-filter: blur(5px);
+  transition: .3s;
+}
+
+#music-toggle:hover {
+  transform: scale(1.1);
+}
+  
 
 /* ── GRAND FINALE MESSAGE ── */
 #final-message {
@@ -548,6 +609,29 @@ function createHeartOutline(container) {
     }, 7000);
 
   }, totalPieces * 100 + 300);
+}
+  /* ── MUSIC ── */
+const music = document.getElementById('bg-music');
+const musicToggle = document.getElementById('music-toggle');
+
+function startMusic() {
+  music.volume = 0.6;
+
+  music.play().then(() => {
+    musicToggle.textContent = '♫';
+  }).catch(() => {
+    console.log('Music could not start.');
+  });
+}
+
+function toggleMusic() {
+  if (music.paused) {
+    music.play();
+    musicToggle.textContent = '♫';
+  } else {
+    music.pause();
+    musicToggle.textContent = '🔇';
+  }
 }
 </script>
 </body>
